@@ -11,16 +11,23 @@
 
 using std::string;
 
-bool is_palindrome(int nb)
+bool is_palindrome(string nb)
 {
-	std::stringstream str_stream(nb);
-	string number;
+	if (nb.front() == nb.back()) {
+		if (nb.length() > 2)
+			return is_palindrome(string(nb.begin() + 1, nb.end() - 1));
+		else return true;
+	}
+	else
+		return false;
 
-	str_stream >> nb;
-	cout << nb << endl;
-	return true;
 }
 int main(void)
 {
-	is_palindrome(123);
+	for (int i = 100; i < 1000; ++i) {
+		for (int j = 100; j < 1000; ++j) {
+			if (is_palindrome(std::to_string(i * j)))
+				cout << i << " x " << j << " = " << i * j << endl;
+		}
+	}
 }
