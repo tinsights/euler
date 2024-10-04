@@ -24,8 +24,8 @@ bool is_palindrome(string nb)
 }
 int main(void)
 {
-	for (int i = 100; i < 1000; ++i) {
-		for (int j = 100; j < 1000; ++j) {
+	for (int i = 900; i < 1000; ++i) {
+		for (int j = 900; j < 1000; ++j) {
 			if (is_palindrome(std::to_string(i * j)))
 				cout << i << " x " << j << " = " << i * j << endl;
 		}
