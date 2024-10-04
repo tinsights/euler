@@ -7,21 +7,27 @@
  */
 #include "../euler.hpp"
 #include <string>
-#include <sstream>
+#include <algorithm>
 
 using std::string;
 
 bool is_palindrome(string nb)
 {
-	if (nb.front() == nb.back()) {
-		if (nb.length() > 2)
-			return is_palindrome(string(nb.begin() + 1, nb.end() - 1));
-		else return true;
-	}
-	else
-		return false;
+	/* Using <algo>s */
+	string bn = nb;
+	std::reverse(bn.begin(), bn.end());
+	return (nb == bn);
 
+	/* "rudimentary" way */
+	// if (nb.front() != nb.back())
+	// 	return false;
+
+	// if (nb.length() > 2)
+	// 	return is_palindrome(string(nb.begin() + 1, nb.end() - 1));
+
+	// return true;
 }
+
 int main(void)
 {
 	for (int i = 900; i < 1000; ++i) {
