@@ -8,11 +8,11 @@ What is the largest prime factor of the number 600851475143?
 
 #define TARGET 600851475143
 
-void print_prime_factors(unsigned long number);
+unsigned long  find_largest_pf(unsigned long number);
 
 int main(void)
 {
-	print_prime_factors(TARGET);
+	cout << find_largest_pf(TARGET) << endl;
 }
 
 bool is_prime(unsigned long nb)
@@ -38,18 +38,21 @@ unsigned long find_next_prime(unsigned long i)
 	return (i);
 }
 
-void print_prime_factors(unsigned long number)
+unsigned long find_largest_pf(unsigned long number)
 {
-	unsigned long prime_factor = 2;
+	unsigned long factor_candidate = 2;
+	unsigned long largest_prime_factor = 0;
 
 	while (number != 1)
 	{
-		if (number % prime_factor == 0)
+		if (number % factor_candidate == 0)
 		{
-			cout << prime_factor << endl;
-			while (number % prime_factor == 0)
-				number /= prime_factor;
+			// cout << factor_candidate << endl;
+			while (number % factor_candidate == 0)
+				number /= factor_candidate;
+			largest_prime_factor = factor_candidate;
 		}
-		prime_factor = find_next_prime(prime_factor + 1);
+		factor_candidate = find_next_prime(factor_candidate + 1);
 	}
+	return (largest_prime_factor);
 }
