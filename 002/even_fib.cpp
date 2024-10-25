@@ -1,6 +1,10 @@
 /**
  * By considering the terms in the Fibonacci sequence whose values do not exceed four million,
  * find the sum of the even-valued terms.
+ * 
+ * Fib: 1, 1, 2, 3, 5, 8,
+ * note that 2 odds give an even, and an odd and an even give an odd, so
+ * every 3rd Fib number is even.
  */
 
 #include "../euler.hpp"
