@@ -5,13 +5,15 @@ What is the 10,001 st prime number?
  */
 
 #include "../euler.hpp"
+#include <iostream>
+#include <string>
 
 bool is_prime(unsigned long nb) {
 	if (nb <= 1)
 		return false;
 
 	unsigned long factor = 2;
-	while (factor < nb / factor) {
+	while (factor <= nb / factor) {
 		if (nb % factor == 0)
 			return false;
 		factor++;
@@ -19,15 +21,22 @@ bool is_prime(unsigned long nb) {
 	return true;
 }
 
-#include <iostream>
-#include <string>
+unsigned long find_next_prime(unsigned long nb) {
+	// given a number nb, assuming it is not prime, find next largest prime
+	// if it is prime, return nb
+
+	if (!is_prime(nb))
+		return find_next_prime(nb + 1);
+	return nb;
+
+}
+
+
 int main(int ac, char **av) {
-	if (ac == 2) {
-		cout << av[1] ;
-		if (is_prime(std::stoi(av[1])))
-				cout << " is prime" << endl;
-		else
-			cout << " isn't prime" << endl;
-	} else
-		std::cerr << "Usage: ./a.out <num>" << endl;
+	int count = -1;
+	unsigned long prime = 1;
+	while (++count < 10001) {
+		prime = find_next_prime(prime + 1);
+	}
+	cout << prime << endl;
 }
